@@ -1,0 +1,32 @@
+body {
+  background-color: #ccc;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image:  url("../assets/images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.page {
+  position: relative;
+  text-align: center;
+}
+
+.page__search {
+  padding-top: 10px;
+}
+
+.page__error {
+  position: absolute;
+  padding: 5px;
+  color: #fff;
+  background-color: #f44336;
+}
+
+.main_table{
+  background-color:white;
+  padding:300px;
+
+
+}
