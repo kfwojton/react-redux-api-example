@@ -2,6 +2,7 @@
 
 List of launches from the api at https://api.spacexdata.com/v3/launches​  on the basis of React + Redux
 
+See the unfinished work-in-progress live app --> https://react-launches-app.herokuapp.com/
 ## Quick Start
 
 To run this app locally just clone, run `npm start` and navigate to `localhost:3000`
