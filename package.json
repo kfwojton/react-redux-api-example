@@ -5,9 +5,9 @@
   "dependencies": {
     "bootstrap": "^4.2.1",
     "font-awesome": "^4.7.0",
+    "moment": "^2.24.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-fontawesome": "^1.6.1",
     "react-redux": "^6.0.0",
     "reactstrap": "^7.0.2",
     "redux": "^4.0.1",

@@ -4,8 +4,9 @@ const Search = ({ onChange }) => (
   <input
     type="text"
     onChange={onChange}
-    placeholder="Enter Launch Name..."
+    placeholder="Enter Mission Name..."
     autoFocus
+    name="search"
   />
 )
 

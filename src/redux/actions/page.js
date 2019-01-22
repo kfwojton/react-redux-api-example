@@ -17,7 +17,7 @@ function setLaunches(data) {
   }
 }
 
-export function getLaunches() {
+  export function getLaunches() {
   return dispatch => {
     dispatch({
       type: GET_LAUNCHES_REQUEST
@@ -47,11 +47,51 @@ export function getLaunches() {
   }
 }
 
-export function filterLaunches(searchString = '') {
+const baseQueryState = {
+  isLaunchSuccess: null,
+  isReused: null,
+  isWithReddit: null,
+  searchQuery: '',
+}
+
+export function filterLaunches(state = baseQueryState) {
   return (dispatch, getState) => {
-    const displayedLaunches = getState().page.launches.filter(launch => {
-      return launch.mission_name.includes(searchString.toLowerCase())
-    })
+
+    let displayedLaunches = getState().page.launches;
+
+    if (state.isReused) {
+      // TODO: This can be optimized, but given the current use case there isn't too much reason to spend a ton of time optimizing this
+      displayedLaunches = displayedLaunches.filter(launch => {
+        if (launch.rocket.fairings === null) {
+          return false
+        } else if (launch.rocket.fairings.reused) {
+          return true
+        }
+
+        let first_stage = launch.rocket.first_stage.cores.map(core => core.reused);
+        if (first_stage.indexOf(true)) {
+          return true
+        }
+
+        let second_stage = launch.rocket.second_stage.payloads.map(payload => payload.reused);
+        if (second_stage.indexOf(true)) {
+          return true
+        }
+
+        return false
+      })
+    }
+    if (state.isLaunchSuccess) {
+      displayedLaunches = displayedLaunches.filter(launch => launch.launch_success === true);
+    }
+    if (state.isWithReddit) {
+      displayedLaunches = displayedLaunches.filter(launch => launch.links.reddit_campaign || launch.links.reddit_launch || launch.links.reddit_media || launch.links.reddit_recovery);
+      }
+    if (state.searchQuery) {
+      displayedLaunches = displayedLaunches.filter(launch => {
+        return launch.mission_name.toLowerCase().includes(state.searchQuery.toLowerCase())
+      })
+    }
 
     dispatch({
       type: FILTER_LAUNCHES,
