@@ -20,7 +20,7 @@ class Launch extends PureComponent {
   render() {
 
     const { launch } = this.props
-    const launch_date = moment(launch.launch_date_utc).format('MMMM Do YYYY, h:mm a');
+    const launchDate = moment(launch.launch_date_utc).format('MMMM Do YYYY, h:mm a');
     return (
 
       <tr className="table_row">
@@ -28,7 +28,7 @@ class Launch extends PureComponent {
         <th>{launch.mission_name}</th>
         <th>{launch.rocket.rocket_name}</th>
         <th>{launch.rocket.rocket_type}</th>
-        <th>{launch_date}</th>
+        <th>{launchDate}</th>
         <th>{launch.details}</th>
         <th>{launch.flight_number}</th>
         <th><a href={launch.links.article_link}><img src={linkImage} className="link_icon" alt="link"/></a>
