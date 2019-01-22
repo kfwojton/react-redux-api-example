@@ -82,7 +82,7 @@ class Page extends Component {
                           type="checkbox"
                           checked={this.state.isLaunchSuccess}
                           onChange={this.handleCheckBoxes} />
-                          <span className="white_text small_padding_left"> Land Success </span>
+                          <span className="white_text small_padding_left"> Launch Success </span>
                      </th>
                      <th>
                        <input
